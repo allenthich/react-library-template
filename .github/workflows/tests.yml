@@ -9,11 +9,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [lts/*]
-        pnpm-version: [10]
-        registry-url: [https://npm.pkg.github.com/]
+    env:
+      NODE_VERSION: lts/*
+      PNPM_VERSION: 10
+      REGISTRY_URL: https://npm.pkg.github.com/
 
     steps:
       - name: Checkout
@@ -23,8 +22,8 @@ jobs:
       - name: Setup Node.js and pnpm
         uses: ./.github/actions/setup-pnpm-node
         with:
-          node-version: ${{ matrix.node-version }}
-          pnpm-version: ${{ matrix.pnpm-version }}
-          registry-url: ${{ matrix.registry-url }}
+          node-version: ${{ env.NODE_VERSION }}
+          pnpm-version: ${{ env.PNPM_VERSION }}
+          registry-url: ${{ env.REGISTRY_URL }}
       - name: Run tests
         run: pnpm run test
