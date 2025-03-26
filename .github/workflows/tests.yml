@@ -12,12 +12,19 @@ jobs:
     strategy:
       matrix:
         node-version: [lts/*]
+        pnpm-version: [10]
+        registry-url: [https://npm.pkg.github.com/]
 
     steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js and pnpm
+        uses: ./.github/actions/setup-node-pnpm
         with:
           node-version: ${{ matrix.node-version }}
-      - run: pnpm install
-      - run: pnpm run test
+          pnpm-version: ${{ matrix.pnpm-version }}
+          registry-url: ${{ matrix.registry-url }}
+      - name: Run tests
+        run: pnpm run test

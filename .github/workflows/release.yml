@@ -18,26 +18,22 @@ jobs:
       issues: write # to be able to comment on released issues
       pull-requests: write # to be able to comment on released pull requests
       id-token: write
+    strategy:
+      matrix:
+        node-version: [lts/*]
+        pnpm-version: [10]
+        registry-url: [https://npm.pkg.github.com/]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
+      - name: Setup Node.js and pnpm
+        uses: ./.github/actions/setup-node-pnpm
         with:
-          version: 10
-          run_install: false    
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 'lts/*'
-          registry-url: https://npm.pkg.github.com/
-          cache: 'pnpm'
-      - name: Install dependencies
-        run: pnpm install
-      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
-        run: pnpm audit signatures
+          node-version: ${{ matrix.node-version }}
+          pnpm-version: ${{ matrix.pnpm-version }}
+          registry-url: ${{ matrix.registry-url }}
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
