@@ -1,6 +1,6 @@
 {
 	"name": "@myorg/react-library-template",
-	"version": "0.0.0-development",
+	"version": "0.0.1",
 	"description": "React template component/library",
 	"private": true,
 	"type": "module",
