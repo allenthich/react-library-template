@@ -1,0 +1,27 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"jsx": "react-jsx",
+		"strict": true,
+		"types": [
+			"vitest/globals",
+			"vitest/importMeta",
+			"vite/client",
+			"node",
+			"vitest"
+		],
+		"composite": true,
+		"noEmit": false
+	},
+	"include": [
+		"vite.config.ts",
+		"vite.config.mts",
+		"vitest.config.ts",
+		"vitest.config.mts",
+		"src/**/*.js",
+		"src/**/*.jsx",
+		"src/**/*.ts",
+		"src/**/*.tsx"
+	],
+	"exclude": ["node_modules", "dist"]
+}

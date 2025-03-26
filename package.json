@@ -1,0 +1,52 @@
+{
+	"name": "@myorg/react-library-template",
+	"version": "0.0.1",
+	"description": "React template component/library",
+	"private": true,
+	"type": "module",
+	"main": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"files": ["dist"],
+	"exports": {
+		".": {
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.js"
+		}
+	},
+	"scripts": {
+		"dev": "vite",
+		"test": "vitest",
+		"build": "vite build",
+		"lint": "pnpm biome lint --error-on-warnings",
+		"lint:fix": "pnpm biome lint --write .",
+		"format": "pnpm biome format",
+		"format:fix": "pnpm biome format . --write",
+		"prepublish": "pnpm run build && pnpm pack"
+	},
+	"peerDependencies": {
+		"react": ">=18.2.0",
+		"react-dom": ">=18.2.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@testing-library/react": "16.1.0",
+		"@types/node": "^18.16.9",
+		"@types/react": "19.0.0",
+		"@types/react-dom": "19.0.0",
+		"@vitejs/plugin-react-swc": "^3.8.1",
+		"@vitest/coverage-v8": "^3.0.5",
+		"@vitest/ui": "^3.0.0",
+		"lefthook": "^1.11.5",
+		"semantic-release": "^24.2.3",
+		"tslib": "^2.3.0",
+		"typescript": "^5.7.2",
+		"vite": "^6.0.0",
+		"vite-plugin-dts": "~4.5.0",
+		"vitest": "^3.0.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/myorg/react-library-template.git"
+	},
+	"keywords": ["react", "typescript"]
+}

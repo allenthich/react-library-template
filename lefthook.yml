@@ -1,0 +1,25 @@
+# EXAMPLE USAGE:
+#
+#   Refer for explanation to following link:
+#   https://lefthook.dev/configuration/
+#
+pre-push:
+  jobs:
+    - name: audit packages
+      tags:
+        - security
+      run: pnpm audit
+    - name: run tests
+      tags:
+        - testing
+      run: pnpm run test
+pre-commit:
+  commands:
+    biome-format:
+      priority: 1
+      glob: "*.{js,ts,jsx,tsx,json,jsonc,html,css}"
+      run: pnpm run format {staged_files}
+    biome-lint:
+      priority: 2
+      glob: "*.{js,ts,jsx,tsx,json,jsonc,css}"
+      run: pnpm run lint {staged_files}
