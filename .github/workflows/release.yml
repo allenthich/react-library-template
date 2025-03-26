@@ -29,7 +29,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Setup Node.js and pnpm
-        uses: ./.github/actions/setup-node-pnpm
+        uses: ./.github/actions/setup-pnpm-node
         with:
           node-version: ${{ matrix.node-version }}
           pnpm-version: ${{ matrix.pnpm-version }}
