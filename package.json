@@ -21,7 +21,7 @@
 		"lint:fix": "pnpm biome lint --write .",
 		"format": "pnpm biome format",
 		"format:fix": "pnpm biome format . --write",
-		"prepublish": "pnpm run build && pnpm pack",
+		"prepack": "pnpm run build",
 		"semantic-release": "semantic-release"
 	},
 	"peerDependencies": {
@@ -55,6 +55,7 @@
 		"branches": ["main"]
 	},
 	"publishConfig": {
+		"access": "public",
 		"registry": "https://npm.pkg.github.com"
 	}
 }

@@ -9,7 +9,7 @@ Create a React component/library with Typescript including:
 
 Bundle package similar to publishing:
 ```bash
-$ pnpm run prepublish
+$ pnpm pack
 ```
 Output: `myorg-react-library-template-0.0.1.tgz`
 
