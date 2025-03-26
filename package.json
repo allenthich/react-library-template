@@ -1,6 +1,6 @@
 {
 	"name": "@myorg/react-library-template",
-	"version": "0.0.1",
+	"version": "0.0.0-development",
 	"description": "React template component/library",
 	"private": true,
 	"type": "module",
@@ -21,7 +21,8 @@
 		"lint:fix": "pnpm biome lint --write .",
 		"format": "pnpm biome format",
 		"format:fix": "pnpm biome format . --write",
-		"prepublish": "pnpm run build && pnpm pack"
+		"prepublish": "pnpm run build && pnpm pack",
+		"semantic-release": "semantic-release"
 	},
 	"peerDependencies": {
 		"react": ">=18.2.0",
@@ -46,7 +47,13 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/myorg/react-library-template.git"
+		"url": "https://github.com/allenthich/react-library-template.git"
 	},
-	"keywords": ["react", "typescript"]
+	"keywords": ["react", "typescript"],
+	"release": {
+		"branches": ["main"]
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com"
+	}
 }
