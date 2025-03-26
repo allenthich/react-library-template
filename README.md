@@ -11,10 +11,10 @@ Bundle package similar to publishing:
 ```bash
 $ pnpm pack
 ```
-Output: `myorg-react-library-template-0.0.1.tgz`
+Output: `allenthich-react-library-template-0.0.1.tgz`
 
 ### Usage
 In the consuming project, run:
 ```bash
-pnpm install ./myorg-react-library-template-0.0.1.tgz
+pnpm install ./allenthich-react-library-template-0.0.1.tgz
 ```

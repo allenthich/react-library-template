@@ -1,5 +1,5 @@
 {
-	"name": "@myorg/react-library-template",
+	"name": "@allenthich/react-library-template",
 	"version": "0.0.1",
 	"description": "React template component/library",
 	"private": true,
