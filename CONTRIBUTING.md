@@ -1,7 +1,7 @@
 # Contributing
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-#### Semantic Release
+## Semantic Release
 **semantic-release** uses the commit messages to determine the consumer impact of changes in the codebase.
 
 Tools such as [commitizen](https://github.com/commitizen/cz-cli) or [commitlint](https://github.com/conventional-changelog/commitlint) are used to help contributors and enforce valid commit messages.
@@ -15,7 +15,7 @@ The table below shows which commit message corresponds to which release type whe
 | `perf(pencil): remove graphiteWidth option`<br><br>`BREAKING CHANGE: The graphiteWidth option has been removed.`<br>`The default graphite width of 10mm is always used for performance reasons.` | ~~Major~~ Breaking Release <br /> (Note that the `BREAKING CHANGE: ` token must be in the footer of the commit) |
 
 
-#### Commit Message Guidelines
+## Commit Message Guidelines
 
 The commit message should follow the following format:
 
@@ -25,6 +25,6 @@ BLANK LINE
 body
 ```
 
-#### Commitizen
+### Commitizen
 
 To simplify and automate the process of committing with this format, run `git add` and execute `pnpm commit`.
