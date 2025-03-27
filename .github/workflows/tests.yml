@@ -12,7 +12,7 @@ jobs:
     env:
       NODE_VERSION: lts/*
       PNPM_VERSION: 10
-      REGISTRY_URL: https://npm.pkg.github.com
+      REGISTRY_URL: "https://npm.pkg.github.com"
 
     steps:
       - name: Checkout
