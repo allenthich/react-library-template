@@ -21,6 +21,7 @@
 		"lint:fix": "pnpm biome lint --write .",
 		"format": "pnpm biome format",
 		"format:fix": "pnpm biome format . --write",
+		"commit": "cz",
 		"prepack": "pnpm run build",
 		"semantic-release": "semantic-release"
 	},
@@ -30,6 +31,8 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
+		"@commitlint/cli": "^19.8.0",
+		"@commitlint/config-conventional": "^19.8.0",
 		"@testing-library/react": "16.1.0",
 		"@types/node": "^18.16.9",
 		"@types/react": "19.0.0",
@@ -37,6 +40,8 @@
 		"@vitejs/plugin-react-swc": "^3.8.1",
 		"@vitest/coverage-v8": "^3.0.5",
 		"@vitest/ui": "^3.0.0",
+		"commitizen": "^4.3.1",
+		"cz-conventional-changelog": "^3.3.0",
 		"jsdom": "^26.0.0",
 		"lefthook": "^1.11.5",
 		"semantic-release": "^24.2.3",
@@ -57,5 +62,13 @@
 	"publishConfig": {
 		"access": "restricted",
 		"registry": "https://npm.pkg.github.com"
+	},
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-conventional-changelog"
+		}
+	},
+	"commitlint": {
+		"extends": ["@commitlint/config-conventional"]
 	}
 }
