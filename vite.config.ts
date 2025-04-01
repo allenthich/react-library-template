@@ -2,7 +2,8 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import dts from "vite-plugin-dts";
-import * as path from "node:path";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
 /**
  * Configuration
@@ -12,17 +13,17 @@ const LIBRARY_NAME = "react-library-template";
 /**
  * Directory
  */
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig(() => ({
 	root: __dirname,
-	cacheDir: `./node_modules/.vite/${LIBRARY_NAME}}`,
+	cacheDir: `./node_modules/.vite/${LIBRARY_NAME}`,
 	plugins: [
 		react(),
 		dts({
 			rollupTypes: true,
 			entryRoot: "src",
-			tsconfigPath: path.join(__dirname, "tsconfig.lib.json"),
+			tsconfigPath: resolve(__dirname, "tsconfig.lib.json"),
 		}),
 	],
 	build: {
@@ -34,6 +35,7 @@ export default defineConfig(() => ({
 		},
 		lib: {
 			// Could also be a dictionary or array of multiple entry points.
+			// See output formats for single/multiple entry points: http://vite.dev/guide/build.html#library-mode
 			entry: "./src/lib/index.ts",
 			name: LIBRARY_NAME,
 			fileName: "index",
@@ -53,7 +55,7 @@ export default defineConfig(() => ({
 		include: ["src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
 		reporters: ["default"],
 		coverage: {
-			reportsDirectory: `./coverage/${LIBRARY_NAME}}`,
+			reportsDirectory: `./coverage/${LIBRARY_NAME}`,
 			provider: "v8" as const,
 		},
 	},
