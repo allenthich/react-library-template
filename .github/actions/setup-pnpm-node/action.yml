@@ -15,7 +15,7 @@ runs:
         node-version: ${{ inputs.node-version }}
         registry-url: ${{ inputs.registry-url }}
         cache: 'pnpm'
-        scope: "@allenthich"
+        scope: "@${{ github.repository_owner }}"
 
     - name: Install dependencies
       run: pnpm install
