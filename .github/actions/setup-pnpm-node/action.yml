@@ -3,11 +3,12 @@ description: Installs pnpm and sets up Node.js
 runs:
   using: "composite"
   steps:
-    - name: Install pnpm ${{ inputs.pnpm-version }}
+    - name: Cache install pnpm ${{ inputs.pnpm-version }}
       uses: pnpm/action-setup@v4
       with:
         version: ${{ inputs.pnpm-version }}
-        run_install: false    
+        run_install: false  
+  
     - name: Install Node.js ${{ inputs.node-version }}
       uses: actions/setup-node@v4
       with:
@@ -15,9 +16,11 @@ runs:
         registry-url: ${{ inputs.registry-url }}
         cache: 'pnpm'
         scope: "@allenthich"
+
     - name: Install dependencies
       run: pnpm install
       shell: bash
+
     - name: Verify the integrity of installed dependencies
       run: pnpm audit signatures
       shell: bash

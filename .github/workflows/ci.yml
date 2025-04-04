@@ -1,29 +1,35 @@
-name: Tests
+name: CI
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - development
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
+      - development
 
 jobs:
-  build:
+  test:
+    name: Run tests
     runs-on: ubuntu-latest
-
     env:
-      NODE_VERSION: lts/*
-      PNPM_VERSION: 10
+      NODE_VERSION: 'lts/*'
+      PNPM_VERSION: '10'
       REGISTRY_URL: "https://npm.pkg.github.com"
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: Setup Node.js and pnpm
-        uses: ./.github/actions/setup-pnpm-node
+        # Use your existing composite action, passing inputs
+        uses: ./.github/actions/setup-pnpm-node 
         with:
           node-version: ${{ env.NODE_VERSION }}
           pnpm-version: ${{ env.PNPM_VERSION }}
           registry-url: ${{ env.REGISTRY_URL }}
+
       - name: Run tests
         run: pnpm run test
